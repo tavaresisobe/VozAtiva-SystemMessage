@@ -32,4 +32,6 @@ COPY --from=base /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.
 COPY --from=base /usr/local/bin /usr/local/bin
 COPY --from=base /app /app
 
+RUN mkdir -p /app/logs
+
 ENTRYPOINT ["sh", "start.sh"]
