@@ -1,5 +1,5 @@
 FROM python:3.11.4-slim-buster
-ENV SERVICE_PORT=8080
+ENV SERVICE_PORT=8000
 
 WORKDIR /app
 

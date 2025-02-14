@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field, StrictStr
 
 class GovEmailSenderInput(BaseModel):
     alert_id: StrictStr = Field(..., description="Alert id")
+    title: StrictStr = Field(..., description="Alert title")
     gov_name: StrictStr = Field(..., description="Name of organization")
     email: StrictStr = Field(..., description="E-mail")
     date: StrictStr = Field(
@@ -18,6 +19,7 @@ class GovEmailSenderInput(BaseModel):
         Os detalhes da denúncia são os seguintes:
 
         - ID da denúncia: {self.alert_id}
+        - Título da denúncia: {self.title}
         - Data e horário do registro: {self.date}
 
         Por favor, acesse o sistema para mais informações e para gerenciar esta denúncia.

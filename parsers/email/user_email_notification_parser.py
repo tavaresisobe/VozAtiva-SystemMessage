@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from pydantic import BaseModel, Field, StrictStr
 
 class UserEmailSenderInput(BaseModel):

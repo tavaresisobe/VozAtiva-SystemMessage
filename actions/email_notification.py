@@ -1,3 +1,4 @@
+import settings
 from utils import system_message
 from http import HTTPStatus
 from starlette.requests import Request
@@ -11,10 +12,12 @@ from exceptions.notification_service import(
     DataRefusedException,
     AuthenticationException
 )
+LOGGER = settings.LOGGER
 
 class SendEmailAction:
 
     async def send_email_to_user_for_alert_status_upadate_action(self, request: Request):
+        LOGGER.debug (f"Descompactando requisição")
         body: dict = await request.json()
         alert_id = body.get("alert_id")
         name = body.get("name")
@@ -63,6 +66,7 @@ class SendEmailAction:
             )
 
     async def send_email_to_user_for_new_alert_action(self, request: Request):
+        LOGGER.debug (f"Descompactando requisição")
         body: dict = await request.json()
         alert_id = body.get("alert_id")
         name = body.get("name")
@@ -111,16 +115,19 @@ class SendEmailAction:
             )
 
     async def send_email_to_gov_for_new_user_alert(self, request: Request):
+        LOGGER.debug (f"Descompactando requisição")
         body : dict = await request.json()
         alert_id= body.get("alert_id")
         organization_name = body.get("name")
         email = body.get("email")
+        title = body.get("title")
 
         try:
             notification_services = EmailNotificationServices()
             input_data = GovEmailSenderInput(alert_id=alert_id,
                                              gov_name=organization_name,
-                                             email=email)
+                                             email=email,
+                                             title=title)
             await notification_services.gov_email_sender_for_new_alert_has_create(input=input_data)
             return response_generator.generate(
                 message=[system_message.SUCESS_OPERATION],

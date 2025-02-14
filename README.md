@@ -83,5 +83,5 @@ Após concluir essas etapas, o ambiente estará configurado e pronto para o dese
 2. **Rodando a imagem criada**:  
    Para iniciar o contêiner a partir da imagem criada, execute o comando abaixo (certifique-se de estar na raiz do projeto):  
    ```bash
-   docker run -p 8080:8080 vozativa-systemmessage
+   docker run -p 8000:8000 vozativa-systemmessage
    ```

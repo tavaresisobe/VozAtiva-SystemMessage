@@ -1,4 +1,4 @@
-SERVICE_PORT = 8080
+SERVICE_PORT = 8000
 
 #include .env
 export
