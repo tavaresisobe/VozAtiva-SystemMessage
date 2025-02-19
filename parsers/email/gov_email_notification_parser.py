@@ -29,4 +29,4 @@ class GovEmailSenderInput(BaseModel):
         """
 
     def new_alert_for_gov_subject(self) -> str:
-        return f"Nova denúncia atribuída: {self.alert_id}"
+        return f"Nova denúncia atribuída: {self.title}"
